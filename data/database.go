@@ -5,17 +5,11 @@ import (
     "github.com/jmoiron/sqlx"
 )
 
-var DB *sqlx.DB;
-
-func CheckErr(err error) {
+func Connect(connectionString string) *sqlx.DB {
+    db, err := sqlx.Open("mysql", connectionString)
     if err != nil {
         panic(err)
     }
-}
-
-func ConnectDB(connectionString string) {
-    db, err := sqlx.Open("mysql", connectionString)
-    CheckErr(err)
-    DB = db
+    return db
 }
 
