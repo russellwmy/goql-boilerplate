@@ -26,7 +26,7 @@ var rootMutation = graphql.NewObject(graphql.ObjectConfig{
     Name: "RootMutation",
     Fields: graphql.Fields{
         /*
-           curl -g 'http://localhost:8080/graphql?query=mutation+_{createTodo(text:"My+new+todo"){id,text,done}}'
+           curl -g 'http://localhost:3000/graphql?query=mutation+_{createTodo(text:"My+new+todo"){id,text,done}}'
         */
         "createTodo": &graphql.Field{
             Type: todoType, // the return type for this field
@@ -65,13 +65,13 @@ var rootMutation = graphql.NewObject(graphql.ObjectConfig{
 // root query
 // we just define a trivial example here, since root query is required.
 // Test with curl
-// curl -g 'http://localhost:8080/graphql?query={lastTodo{id,text,done}}'
+// curl -g 'http://localhost:3000/graphql?query={lastTodo{id,text,done}}'
 var rootQuery = graphql.NewObject(graphql.ObjectConfig{
     Name: "RootQuery",
     Fields: graphql.Fields{
 
         /*
-           curl -g 'http://localhost:8080/graphql?query={todo(id:"b"){id,text,done}}'
+           curl -g 'http://localhost:3000/graphql?query={todo(id:"b"){id,text,done}}'
         */
         "todo": &graphql.Field{
             Type: todoType,
@@ -94,7 +94,7 @@ var rootQuery = graphql.NewObject(graphql.ObjectConfig{
         },
 
         /*
-           curl -g 'http://localhost:8080/graphql?query={todoList{id,text,done}}'
+           curl -g 'http://localhost:3000/graphql?query={todoList{id,text,done}}'
         */
         "todoList": &graphql.Field{
             Type:        graphql.NewList(todoType),
