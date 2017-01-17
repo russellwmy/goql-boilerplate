@@ -1,3 +1,5 @@
+# Real Word golabg graphql sample
+
 # Requirements
 - Docker: https://www.docker.com/products/overview
 
@@ -8,9 +10,22 @@
 - run ```docker-componse up web```
 
 # Useage
-
-- web_1    | Now server is running on port 3000
-- web_1    | Get single todo: curl -g 'http://localhost:3000/graphql?query={todo(id:"b"){id,text,done}}'
-- web_1    | Create new todo: curl -g 'http://localhost:3000/graphql?query=mutation+_{createTodo(text:"My+new+todo"){id,text,done}}'
-- web_1    | Load todo list: curl -g 'http://localhost:3000/graphql?query={todoList{id,text,done}}'
-- web_1    | :3000
+Add Record
+```
+mutation {
+ createUser(user: {name:"Russell", email:"russell@abc.com", password:"123456"})
+  {
+    name,
+    email,
+    updatedAt
+  }
+}
+```
+Query Record
+```query {
+  user(id:1) {
+    name,
+    email,
+    updatedAt
+  }
+}```

@@ -16,26 +16,26 @@ services:
       MYSQL_DATABASE: app
 
   web:
-    restart: always
+    # restart: always
     build: "."
     expose:
       - "3000"
     volumes:
-      - ./:/opt/app
+      - ./:/opt/go/src/github.com/russellwmy/goql-boilerplate
     environment:
       DEBUG: 'true'
       PORT: 3000
       REDIS_URI: localhost:6379
       REDIS_PASSOWRD: password
       # change 192.168.0.106 to your internal ip
-      CONNECTION_STRING: root:123456@tcp(192.168.0.106:3306)/app?charset=utf8&parseTime=True
+      CONNECTION_STRING: root:123456@tcp(192.168.0.109:3306)/app?charset=utf8&parseTime=True
     ports:
       - "3000:3000"
     links:
       - mysql
     depends_on:
-       - mysql
+      - mysql
     # stdin_open: true
     # tty: true
     # command: bash
-    command: go run /opt/app/main.go
+    command: go run /opt/go/src/github.com/russellwmy/goql-boilerplate/main.go
